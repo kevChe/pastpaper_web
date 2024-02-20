@@ -2,13 +2,13 @@ import {getLocalData} from '@/app/lib/get_data';
 import FlipCard from "@/app/ui/flipcard";
 
 interface question_details {
-    Paper_No?: string;
-    Question_No?: string;
-    Question?: string;
-    Answers?: string;
+    Paper_No: string;
+    Question_No: string;
+    Question: string;
+    Answers: string;
   }
 
-export default async function questions(filter: String) {
+export default async function questions() {
     const question_details = await getLocalData();
 
     const filterValue = "w20"
@@ -23,7 +23,7 @@ export default async function questions(filter: String) {
             return value.includes(filterValue.toLowerCase());
         });
     });
-    console.log(filteredData)
+    // console.log(filteredData)
 
     return (
         <div className='flex flex-col gap-12 z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex' >
@@ -32,7 +32,7 @@ export default async function questions(filter: String) {
                 const {Paper_No, Question_No, Question, Answers} = question_detail
                 // console.log(question_detail)
                 return(
-                    <div className='w-full'>
+                    <div className='w-full' key={Paper_No+Question_No}>
                         <FlipCard question={Question} answer={Answers} />
                     </div>
                 )

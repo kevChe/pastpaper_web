@@ -12,7 +12,7 @@ export default async function questions() {
     const question_details = await getLocalData();
 
     const filterValue = "w20"
-    const filteredData = question_details.filter(function(item) {
+    const filteredData = question_details.filter(function(item: question_details) {
         // Convert all property values of the current item to lowercase strings
         var lowercaseValues = Object.values(item).map(function(value) {
             return String(value).toLowerCase();

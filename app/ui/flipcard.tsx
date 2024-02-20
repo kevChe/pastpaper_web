@@ -15,7 +15,7 @@ export default function Card(question_details: question_details ){
 
     const [flip, setFlip] = useState(false)
 
-    const cardRef = useRef(null);
+    const cardRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if (cardRef.current) {
             const cardHeight = cardRef.current.scrollHeight;

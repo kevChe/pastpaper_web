@@ -16,10 +16,18 @@ export default function Card(question_details: question_details ){
     const [flip, setFlip] = useState(false)
 
     const cardRef = useRef<HTMLDivElement>(null);
+    const questionRef = useRef<HTMLDivElement>(null);
+    const answerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        if (cardRef.current) {
-            const cardHeight = cardRef.current.scrollHeight;
+        if (cardRef.current && questionRef.current && answerRef.current) {
+            const cardHeight = questionRef.current.scrollHeight;
             cardRef.current.style.height = `${cardHeight}px`;
+            questionRef.current.style.height = `${cardHeight}px`;
+            answerRef.current.style.height = `${cardHeight}px`;
+            questionRef.current.style.justifyContent = "space-evenly";
+            answerRef.current.style.justifyContent = "space-evenly";
+            console.log(answerRef.current.style)
         }
     });
 
@@ -29,7 +37,7 @@ export default function Card(question_details: question_details ){
     
     const FlipButton = () =>{
         return(
-            <button className="text-black border- flex-1 border-black" onClick={handleFlip}>CLick</button>
+            <button className="text-black border-black" onClick={handleFlip}>CLick</button>
         )
     }
 
@@ -61,11 +69,12 @@ export default function Card(question_details: question_details ){
                     "[transform:rotateY(180deg)]": flip === true
                 }
             )}>
-                <div className="absolute h-fit inset-0 w-full [backface-visibility:hidden] p-4 border-red-500 border-2">
+                <div ref={questionRef} className="absolute h-fit flex flex-col inset-0 w-full [backface-visibility:hidden] p-4 border-red-500 border-2">
                     <h1 className=" text-3xl text-black">{question}</h1>
+                    <input className="border-2 border-black "/>
                     <FlipButton />
                 </div>
-                <div className="absolute h-fit inset-0 p-4 w-full rounded-xl bg-black/80 border-red-500 border-2 text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div ref={answerRef} className="absolute justify-evenly h-fit inset-0 p-4 w-full rounded-xl bg-black/80 border-red-500 border-2 text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                     <h1 className="text-3xl font-bold text-white h-fit">{answer}</h1>
                     <FlipButton />
                 </div>

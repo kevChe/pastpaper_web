@@ -22,11 +22,11 @@ export default function Card(question_details: question_details ){
 
     useEffect(() => {
         if (cardRef.current && questionRef.current && answerRef.current && textareaRef.current) {
-            const cardHeight = questionRef.current.scrollHeight;
+            
+            const cardHeight = Math.max(questionRef.current.scrollHeight, answerRef.current.scrollHeight);
             // const textareaHeight = textareaRef.current.scrollHeight
             cardRef.current.style.height = `${cardHeight }px`;
-            // questionRef.current.style.height = `${cardHeight + textareaHeight}px`;
-            // answerRef.current.style.height = `${cardHeight + textareaHeight}px`;
+
             // questionRef.current.style.justifyContent = "space-between";
             // answerRef.current.style.justifyContent = "space-between";
             console.log(answerRef.current.style)
@@ -76,7 +76,7 @@ export default function Card(question_details: question_details ){
                     
                 </div>
                 <div ref={answerRef} className="absolute inset-0 w-full [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                    <div className="p-3"><h1 className="text-2xl text-black h-fit">{answer}</h1></div>
+                    <div className="p-3"><h1 style={{whiteSpace: "pre-line"}} className="text-2xl text-black h-fit">{answer}</h1></div>
                     
                 </div>
             </div>

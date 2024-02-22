@@ -1,5 +1,9 @@
+'use client'
+
 import {getLocalData} from '@/app/lib/get_data';
 import FlipCard from "@/app/ui/flipcard";
+import { useSearchParams } from 'next/navigation';
+
 
 interface question_details {
     Paper_No: string;
@@ -9,9 +13,11 @@ interface question_details {
   }
 
 export default async function questions() {
-    const question_details = await getLocalData();
 
-    const filterValue = "w20"
+    const searchParams = useSearchParams();
+    const question_details = await getLocalData();
+    
+    const filterValue = searchParams.get('query')?.toString();
     const filteredData = question_details.filter(function(item: question_details) {
         // Convert all property values of the current item to lowercase strings
         var lowercaseValues = Object.values(item).map(function(value) {

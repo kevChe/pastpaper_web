@@ -23,7 +23,7 @@ export default function Card(question_details: question_details ){
     useEffect(() => {
         if (cardRef.current && questionRef.current && answerRef.current && textareaRef.current) {
             const cardHeight = questionRef.current.scrollHeight;
-            const textareaHeight = textareaRef.current.scrollHeight
+            // const textareaHeight = textareaRef.current.scrollHeight
             cardRef.current.style.height = `${cardHeight }px`;
             // questionRef.current.style.height = `${cardHeight + textareaHeight}px`;
             // answerRef.current.style.height = `${cardHeight + textareaHeight}px`;
@@ -31,7 +31,7 @@ export default function Card(question_details: question_details ){
             // answerRef.current.style.justifyContent = "space-between";
             console.log(answerRef.current.style)
         }
-    }, [cardRef, questionRef, answerRef]);
+    }, [cardRef, questionRef, answerRef, question_details]);
 
     const handleFlip = () => {
         setFlip(!flip)
@@ -43,7 +43,7 @@ export default function Card(question_details: question_details ){
         )
     }
 
-
+    // console.log(question)
     return(
         // <div className="group w-full [perspective:2000px] border-blue-600 border-2" style={{minHeight: 'fit-content'}}>
         //     <div className={clsx(
@@ -72,7 +72,7 @@ export default function Card(question_details: question_details ){
                 }
             )}>
                 <div ref={questionRef} className="absolute inset-0 w-full [backface-visibility:hidden]" >
-                    <div className="p-3"><h1 className=" text-2xl text-black">{question}</h1></div>
+                    <div className="p-3"><h1 style={{whiteSpace: "pre-line"}} className=" text-2xl text-black">{question}</h1></div>
                     
                 </div>
                 <div ref={answerRef} className="absolute inset-0 w-full [transform:rotateY(180deg)] [backface-visibility:hidden]">
@@ -80,7 +80,7 @@ export default function Card(question_details: question_details ){
                     
                 </div>
             </div>
-            <textarea ref={textareaRef} className="shadow-lg p-4 w-full border-2 border-black text-black  mb-6" rows={3}>  </textarea>
+            <textarea ref={textareaRef} className="shadow-lg p-4 w-full border-2 border-black text-black  mb-6" rows={3} /> 
             <div className="w-full flex justify-center"><FlipButton /></div>
             
         </div>

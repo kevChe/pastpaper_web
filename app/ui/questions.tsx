@@ -14,7 +14,7 @@ interface QuestionDetail {
     Answers: string;
 }
 
-export default async function questions({question_details}: {question_details: QuestionDetail[]}) {
+export default async function Questions({question_details}: {question_details: QuestionDetail[]}) {
 
     const searchParams = useSearchParams();
 

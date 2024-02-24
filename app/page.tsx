@@ -1,10 +1,6 @@
-import Image from "next/image";
-import FlipCard from "./ui/flipcard";
 import Questions from "@/app/ui/questions"
 import {getLocalData} from '@/app/lib/get_data';
 import Search from "./ui/search";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 
 
 export default async function Home() {

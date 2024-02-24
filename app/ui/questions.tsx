@@ -1,9 +1,8 @@
 "use client"
 
-import {getLocalData} from '@/app/lib/get_data';
 import FlipCard from "@/app/ui/flipcard";
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+
 
 interface QuestionDetail {
     Paper_No: string;

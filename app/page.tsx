@@ -11,10 +11,11 @@ export default async function Page() {
   
   return (
     <main className="flex  min-h-screen flex-col items-center justify-between p-24 bg-slate-200 border-2 border-black">
-        <Search />
+        {/* <Search /> */}
         {/* <Suspense fallback="<div>Loading...</div>"> */}
                  {/* <Questions question_details={question_details} /> */}
         {/* </Suspense> */}
+        <h1>HIHI</h1>
     </main>
   );
 }

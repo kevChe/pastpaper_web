@@ -4,7 +4,7 @@ import Search from "./ui/search";
 import { Suspense } from "react";
 
 
-export default async function Home() {
+export default async function Page() {
   // console.log(questions[0].Question)
 
   // const question_details = await getLocalData();

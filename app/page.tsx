@@ -10,7 +10,7 @@ export default async function Page() {
   const question_details = await getLocalData();
   
   return (
-    <main className="flex  min-h-screen flex-col items-center justify-between p-10 md:p-24 bg-slate-200 border-2 border-black">
+    <main className="flex  min-h-screen flex-col items-center justify-between p-10 md:p-12 bg-slate-200 border-2 border-black">
         <Suspense fallback="<div>Loading...</div>">
           <Search />
         </Suspense>

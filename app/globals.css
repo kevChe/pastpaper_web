@@ -31,3 +31,12 @@ body {
     text-wrap: balance;
   }
 }
+
+h1 {
+  color: black;
+  font-size: large
+}
+
+p {
+  color: black;
+}

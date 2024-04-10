@@ -34,7 +34,9 @@ body {
 
 h1 {
   color: black;
-  font-size: large
+  font-size: large;
+  text-align: center;
+  flex: 1;
 }
 
 p {

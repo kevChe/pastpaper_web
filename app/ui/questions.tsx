@@ -1,8 +1,5 @@
-"use client"
-
+import { getLocalData } from "../lib/get_data";
 import FlipCard from "@/app/ui/flipcard";
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from "react";
 
 interface QuestionDetail {
     Paper_No: string;
@@ -13,44 +10,29 @@ interface QuestionDetail {
     Key: number;
 }
 
-export default function Questions({question_details}: {question_details: QuestionDetail[]}) {
+export default async function Questions({ query, subject}: { query: String; subject:String}) {
+    console.log("LOAD")
+    const question_details = await getLocalData(subject);
+    const filterValue = query
 
-    const [filteredData, setFilteredData] = useState<QuestionDetail[]>(question_details)
-    const searchParams = useSearchParams();
-    const filterValue = searchParams.get("query") || ""
-
-    useEffect(() => {
-
-
-        const updateFilteredData = question_details.filter(function(item: QuestionDetail) {
-            // Convert all property values of the current item to lowercase strings
-            var lowercaseValues = Object.values(item).map(function(value) {
-                return String(value).toLowerCase();
-            });
-        
-            // Check if the filterValue exists in any of the lowercase property values
-            return lowercaseValues.some(function(value) {
-                return value.includes(filterValue.toLowerCase());
-            });
+    const filteredData = question_details.filter(function(item: QuestionDetail) {
+        // Convert all property values of the current item to lowercase strings
+        var lowercaseValues = Object.values(item).map(function(value) {
+            return String(value).toLowerCase();
         });
-
-        setFilteredData(updateFilteredData);
-        console.log(filterValue)
-    }, [filterValue, question_details])
-
-
-
-
-
-
+    
+        // Check if the filterValue exists in any of the lowercase property values
+        return lowercaseValues.some(function(value) {
+            return value.includes(filterValue.toLowerCase());
+        });
+    });
     return (
-        <div className='flex flex-col gap-12 z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex' >
+        <div className='flex flex-col gap-12 z-10 w-full items-center justify-between font-mono text-sm lg:flex' >
             {
                 filteredData.map((question_detail: QuestionDetail) => {
-                const {Paper_No, Question, Answer, Key, Question_No} = question_detail
                 return(
-                    <div className='w-full' key={Key}>
-                        <FlipCard Question={Question} Answer={Answer} Paper_No={Paper_No} Question_No={Question_No}/>
+                    <div className='w-full' key={question_detail.Key}>
+                        <FlipCard question_detail={question_detail} subject={subject}/>
                     </div>
                 )
                 })

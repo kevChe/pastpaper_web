@@ -25,6 +25,7 @@ export default function Navbar() {
                         <button 
                         className="flex flex-1 border-2 border-black text-black"
                         onClick={() => handleClick(subject.name)}
+                        key={subject.name}
                         >
                             {subject.name}
                         </button>

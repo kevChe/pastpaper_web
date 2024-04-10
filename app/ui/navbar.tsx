@@ -7,8 +7,8 @@ export default function Navbar() {
     const { replace } = useRouter();
 
     const subjects = [
-        {name: "ICT"},
-        {name: "CS"}
+        {name: "ict"},
+        {name: "cs"}
     ]
 
     function handleClick(subject: string){

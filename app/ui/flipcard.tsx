@@ -26,7 +26,7 @@ export default function Card({question_detail, subject}: {question_detail: Quest
     const searchParam = useSearchParams();
 
     useEffect(() => {
-        if (cardRef.current && questionRef.current && answerRef.current && textareaRef.current) {
+        if (cardRef.current && questionRef.current && answerRef.current ) {
             
             const cardHeight = Math.max(questionRef.current.scrollHeight, answerRef.current.scrollHeight);
             cardRef.current.style.height = `${cardHeight }px`;
@@ -46,11 +46,11 @@ export default function Card({question_detail, subject}: {question_detail: Quest
     const showAnswer = (subject: String) => {
         if (searchParam?.get("subject") === "ICT") {
             return (
-                <p style={{whiteSpace: "pre-line"}} className=" h-fit m-3">{Answer}</p>
+                <Show_pdf />
             )
         }else{
             return(
-                <Show_pdf />
+                <p style={{whiteSpace: "pre-line"}} className=" h-fit m-3">{Answer}</p>
             )
         }
     }
@@ -60,7 +60,8 @@ export default function Card({question_detail, subject}: {question_detail: Quest
     return(
         <div  className="group w-full [perspective:2000px] border-black border-2 p-4 rounded-xl shadow-2xl bg-white" style={{ minHeight: 'fit-content' }}>
             <div className="w-full py-4 flex">
-                <h1 >Paper Number: <b>{Paper_No}</b></h1>
+                <h1 >Paper Number: <a href={`/ict/qp/${Paper_No}`} target="_blank"><b>{Paper_No}</b></a> </h1>
+                <h1> <a href={`ict/ms/${Paper_No.replace("qp", "ms")}`} target="_blank">ms</a> </h1>
                 <h1 >Question Number: <b>{Question_No}</b> </h1>
                 <h1 >Marks: <b>{Marks}</b></h1>
             </div>
@@ -78,7 +79,7 @@ export default function Card({question_detail, subject}: {question_detail: Quest
                     <div className="h-full">{showAnswer(subject)}</div>
                 </div>
             </div>
-            <textarea ref={textareaRef} className="shadow-lg p-4 w-full border-2 border-black text-black  mb-6" rows={3} /> 
+            {/* <textarea ref={textareaRef} className="shadow-lg p-4 w-full border-2 border-black text-black  mb-6" rows={3} />  */}
             <div className="w-full flex justify-center"><FlipButton /></div>
             
         </div>

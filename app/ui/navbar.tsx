@@ -23,7 +23,7 @@ export default function Navbar() {
                 subjects.map((subject) => {
                     return(
                         <button 
-                        className="flex flex-1 border-2 border-black text-black"
+                        className="flex flex-1 border-2 border-black text-black "
                         onClick={() => handleClick(subject.name)}
                         key={subject.name}
                         >

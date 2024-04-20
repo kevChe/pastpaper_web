@@ -55,13 +55,25 @@ export default function Card({question_detail, subject}: {question_detail: Quest
         }
     }
 
+    const paperLink = () => {
+        var link = ""
+        if(subject === "ict"){
+            link = `/ict/qp/${Paper_No}`
+        }else if(subject === "cs"){
+            link = `/cs/qp/p1/${Paper_No}`
+        }else if(subject === "cs2"){
+            link = `/cs/qp/p2/${Paper_No}`
+        }
+        return link
+    }
+
 
     // console.log(question)
     return(
         <div  className="group w-full [perspective:2000px] border-black border-2 p-4 rounded-xl shadow-2xl bg-white" style={{ minHeight: 'fit-content' }}>
             <div className="w-full py-4 flex">
-                <h1 >Paper Number: <a href={`/ict/qp/${Paper_No}`} target="_blank"><b>{Paper_No}</b></a> </h1>
-                <h1> <a href={`ict/ms/${Paper_No.replace("qp", "ms")}`} target="_blank">ms</a> </h1>
+                <h1 >Paper Number: <a href={paperLink()} target="_blank"><b>{Paper_No}</b></a> </h1>
+                <h1> <a href={paperLink().replaceAll("qp","ms")} target="_blank">ms</a> </h1>
                 <h1 >Question Number: <b>{Question_No}</b> </h1>
                 <h1 >Marks: <b>{Marks}</b></h1>
             </div>

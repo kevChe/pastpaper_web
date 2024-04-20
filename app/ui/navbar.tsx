@@ -8,7 +8,8 @@ export default function Navbar() {
 
     const subjects = [
         {name: "ict"},
-        {name: "cs"}
+        {name: "cs"},
+        {name: "cs2"}
     ]
 
     function handleClick(subject: string){
@@ -18,12 +19,12 @@ export default function Navbar() {
     }
 
     return(
-        <div className="flex flex-row w-full">
+        <div className="flex flex-row w-full mb-5 ">
             {
                 subjects.map((subject) => {
                     return(
                         <button 
-                        className="flex flex-1 border-2 border-black text-black "
+                        className="flex flex-1 border-2 border-black text-black justify-center "
                         onClick={() => handleClick(subject.name)}
                         key={subject.name}
                         >
